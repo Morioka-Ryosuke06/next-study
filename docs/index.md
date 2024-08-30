@@ -9,3 +9,4 @@
 `const fontNotoSansJP = Noto_Sans_JP({ subsets: ['latin'] });`：フォントの指定
 `<body className={fontNotoSansJP.className}>{children}</body>`：フォントを適用
 `<body className={cn('bg-background antialiased min-h-screen', fontNotoSansJP.className)}>{children}</body>`：cn を使うことで、フォントを適用した body タグに、背景色やマイナスの高さを指定できる utils から import
+`(marketing)`：`app/(marketing)`というディレクトリを作成することで、`app/page.tsx`とは別のページとして認識される
