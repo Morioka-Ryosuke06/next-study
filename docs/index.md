@@ -74,10 +74,52 @@ const [showMobileMenu, setShowMobileMenu] = useState(false);
 
 `{showMobileMenu && <MobileNav />}` の部分では、`showMobileMenu` が `true` の場合にのみ `<MobileNav />` コンポーネントがレンダリングされます。これにより、ボタンクリックに応じてモバイルナビゲーションの表示を制御できます。
 
-https://usehooks.com/uselockbodyscroll
-`npm i @uidotdev/usehooks`：便利
+## ユーティリティフック
+
+- `useLockBodyScroll`: ボディのスクロールをロックするためのフック
+- インストール: `npm i @uidotdev/usehooks`
+- 使用方法:
 
 ```jsx
 import { useLockBodyScroll } from '@uidotdev/usehooks';
-useLockBodyScroll();
+
+function MyComponent() {
+  useLockBodyScroll();
+
+  // コンポーネントの残りの部分
+}
 ```
+
+### `useLockBodyScroll` の使用例
+
+このフックは、モーダルやフルスクリーンメニューを表示する際に、背景のスクロールを防ぐのに役立ちます。例えば、モバイルナビゲーションを表示する際に使用できます：
+
+```jsx
+import { useState } from 'react';
+import { useLockBodyScroll } from '@uidotdev/usehooks';
+
+function MobileNav() {
+  useLockBodyScroll();
+
+  return (
+    // モバイルナビゲーションの内容
+  );
+}
+
+function App() {
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
+
+  return (
+    <>
+      <button onClick={() => setShowMobileMenu(!showMobileMenu)}>
+        Toggle Menu
+      </button>
+      {showMobileMenu && <MobileNav />}
+    </>
+  );
+}
+```
+
+この実装では、`MobileNav` コンポーネントがマウントされたときに自動的にボディのスクロールがロックされ、アンマウントされたときにロックが解除されます。これにより、モバイルメニューが開いている間、背景のコンテンツがスクロールされるのを防ぐことができます。
+
+`useLockBodyScroll` のようなカスタムフックを使用することで、よく使われる機能を簡単に再利用可能な形で実装できます。これは React アプリケーションの開発を効率化し、コードの可読性を向上させるのに役立ちます。
