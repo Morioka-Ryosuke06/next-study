@@ -74,4 +74,10 @@ const [showMobileMenu, setShowMobileMenu] = useState(false);
 
 `{showMobileMenu && <MobileNav />}` の部分では、`showMobileMenu` が `true` の場合にのみ `<MobileNav />` コンポーネントがレンダリングされます。これにより、ボタンクリックに応じてモバイルナビゲーションの表示を制御できます。
 
-この方法は、条件付きレンダリングと状態管理を組み合わせた典型的な React パターンで、ユーザーインタラクションに基づいて UI を動的に更新するのに役立ちます。
+https://usehooks.com/uselockbodyscroll
+`npm i @uidotdev/usehooks`：便利
+
+```jsx
+import { useLockBodyScroll } from '@uidotdev/usehooks';
+useLockBodyScroll();
+```
