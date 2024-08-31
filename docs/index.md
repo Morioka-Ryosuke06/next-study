@@ -10,3 +10,14 @@
 `<body className={fontNotoSansJP.className}>{children}</body>`：フォントを適用
 `<body className={cn('bg-background antialiased min-h-screen', fontNotoSansJP.className)}>{children}</body>`：cn を使うことで、フォントを適用した body タグに、背景色やマイナスの高さを指定できる utils から import
 `(marketing)`：`app/(marketing)`というディレクトリを作成することで、`app/page.tsx`とは別のページとして認識される
+
+`rel="noreferrer"`：セキュリティのために、target="\_blank"と一緒に使う
+
+```jsx
+<Link href={'/login'} className={cn(buttonVariants({ size: 'lg', variant: 'outline' }))} target="_blank" rel="noreferrer">
+  Github
+</Link>
+```
+
+`siteConfig`：サイトの設定を定義するファイル
+`types/index.d.ts`：型を定義するファイル
