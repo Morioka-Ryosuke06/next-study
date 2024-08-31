@@ -21,3 +21,16 @@
 
 `siteConfig`：サイトの設定を定義するファイル
 `types/index.d.ts`：型を定義するファイル
+
+main-nav.tsx
+`'use client';`：useState を使う時はクライアントコンポーネントにする。デフォルトはサーバーコンポーネント
+`const [] = useState()`：：押したかの判定を管理
+
+```tsx
+<button className="md:hidden" onClick={() => setShowMobileMenu(!showMobileMenu)}>
+  <span>メニュー</span>
+</button>;
+{
+  showMobileMenu && <MobileNav />;
+}
+```
