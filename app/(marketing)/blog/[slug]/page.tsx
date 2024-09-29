@@ -6,11 +6,29 @@ import Link from 'next/link';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import Mdx from '@/components/mdx-component';
+import { Metadata } from 'next';
 
 async function getPostFromSlug(slug: string) {
   const post = allPosts.find((post) => post.slugAsParams === slug);
 
   return post;
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const page = await getPostFromSlug(params.slug);
+
+  if (!page) {
+    return {};
+  }
+
+  return {
+    title: page.title,
+    description: page.description,
+    openGraph: {
+      title: page.title,
+      description: page.description,
+    },
+  };
 }
 
 export default async function PostPage({ params }: { params: { slug: string } }) {
