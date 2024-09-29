@@ -127,3 +127,5 @@ import NextAuth from 'next-auth';
 const handler = NextAuth({});
 
 export { handler as GET, handler as POST };
+
+認証の仕組み jwt,暗号化
