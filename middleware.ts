@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 
 export default withAuth(
   async function middleware(req) {
-    const token = getToken({ req });
+    const token = await getToken({ req });
     const isAuth = !!token;
     const isAuthPage = req.nextUrl.pathname.startsWith('/login') || req.nextUrl.pathname.startsWith('/register');
 
@@ -21,7 +21,10 @@ export default withAuth(
   },
   {
     callbacks: {
-      async authorized({ req, token }) {
+      async authorized() {
+        // This is a work-around for handling redirect on auth pages.
+        // We return true here so that the middleware function above
+        // is always called.
         return true;
       },
     },
@@ -29,5 +32,5 @@ export default withAuth(
 );
 
 export const config = {
-  matcher: ['/dashboard/:path', '/editor/:path', '/login', '/register'],
+  matcher: ['/dashboard/:path*', '/editor/:path*', '/login', '/register'],
 };
