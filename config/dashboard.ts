@@ -1,5 +1,4 @@
 import { DashboardConfig } from '@/types';
-import { title } from 'process';
 
 export const dashboardConfig: DashboardConfig = {
   mainNav: [
@@ -21,13 +20,13 @@ export const dashboardConfig: DashboardConfig = {
     },
     {
       title: 'お支払い',
-      href: '/dashboard/billings',
-      icon: 'post',
+      href: '/dashboard/billing',
+      icon: 'billing',
     },
     {
-      title: '記事投稿',
-      href: 'dashboard/settings',
-      icon: 'post',
+      title: '設定',
+      href: '/dashboard/settings',
+      icon: 'settings',
     },
   ],
 };

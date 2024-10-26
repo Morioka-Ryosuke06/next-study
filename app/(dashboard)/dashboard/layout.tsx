@@ -4,6 +4,7 @@ import { buttonVariants } from '@/components/ui/button';
 import MainNav from '@/components/main-nav';
 import { dashboardConfig } from '@/config/dashboard';
 import SiteFooter from '@/components/site-footer';
+import DashboardNav from '@/components/dashboard-nav';
 
 export default function dashboardLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -14,7 +15,9 @@ export default function dashboardLayout({ children }: { children: React.ReactNod
         </div>
       </header>
       <div className="container grid flex-1 gap-12 md:grid-cols-[200px_1fr]">
-        <aside>Side</aside>
+        <aside className="hidden md:flex w-[200px] flex-col">
+          <DashboardNav items={dashboardConfig.sidebarNav} />
+        </aside>
         <main className="flex flex-col w-full flex-1 overflow-hidden">{children}</main>
       </div>
       <SiteFooter />
